@@ -7,7 +7,7 @@
 def pascal_triangle(N):
 
     if N <= 0:
-        return []
+        return [[]]
     C = [[1]]
     for n in range(1, N):
         B = [1]
