@@ -5,7 +5,11 @@
 
 
 def pascal_triangle(N):
-
+    """
+    Returns a list of integers
+    representing the Pascal Triangle of n
+    returns empty list if n <= 0
+    """
     if N <= 0:
         return [[]]
     C = [[1]]
