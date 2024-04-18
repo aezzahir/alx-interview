@@ -1,23 +1,19 @@
-#!/usr/bin/python3
-"""
-BFS Algorithm
-"""
-
+from collections import deque
 
 def canUnlockAll(boxes):
     """
-    canUnlockAll function
+    Determines whether all boxes can be opened based on keys found in boxes.
     """
     n = len(boxes)
-    visited = set()  # Set to store visited boxes
-    queue = [0]      # Queue to keep track of boxes to visit
+    visited = [False] * n
+    visited[0] = True
+    opened_boxes = deque([0])
 
-    while queue:
-        box = queue.pop(0)
-        visited.add(box)
+    while opened_boxes:
+        current_box = opened_boxes.popleft()
+        for key in boxes[current_box]:
+            if key < n and not visited[key]:
+                visited[key] = True
+                opened_boxes.append(key)
 
-        for key in boxes[box]:
-            if key < n and key not in visited:
-                queue.append(key)
-
-    return len(visited) == n
+    return all(visited)
