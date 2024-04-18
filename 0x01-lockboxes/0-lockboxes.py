@@ -8,6 +8,10 @@ def canUnlockAll(boxes):
     """
     canUnlockAll function
     """
+    if (type(boxes)) is not list:
+        return False
+    elif (len(boxes)) == 0:
+        return False
     n = len(boxes)
     visited = set()  # Set to store visited boxes
     queue = [0]      # Queue to keep track of boxes to visit
