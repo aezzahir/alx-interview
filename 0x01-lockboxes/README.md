@@ -1,2 +1,4 @@
 ### 0x01. Lockboxes
-+ By aezzahir
+- Algorithm
+- Python
+© By aezzahir
