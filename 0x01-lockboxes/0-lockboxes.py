@@ -4,21 +4,20 @@ BFS Algorithm
 """
 
 
-def can_unlock_all(boxes):
+def canUnlockAll(boxes):
     """
-    Checks whether a series of locked boxes can be
-    opened based on available keys.
-    This function solves the lockboxes problem.
+    canUnlockAll function
     """
-    if not isinstance(boxes, list) or len(boxes) == 0:
-        return False
+    n = len(boxes)
+    visited = set()  # Set to store visited boxes
+    queue = [0]      # Queue to keep track of boxes to visit
 
-    for key in range(1, len(boxes) - 1):
-        box_checked = False
-        for idx, box in enumerate(boxes):
-            box_checked = key in box and key != idx
-            if box_checked:
-                break
-        if not box_checked:
-            return False
-    return True
+    while queue:
+        box = queue.pop(0)
+        visited.add(box)
+
+        for key in boxes[box]:
+            if key < n and key not in visited:
+                queue.append(key)
+
+    return len(visited) == n
