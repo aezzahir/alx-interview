@@ -8,7 +8,10 @@
 
 
 def validUTF8(data):
-    """0x04. UTF-8 Validation"""
+    """
+    0x04. UTF-8 Validation
+    0x04. UTF-8 Validation
+    """
     n_bytes = 0
     for byte in data:
         byte_bin = bin(byte)[2:].zfill(8)
