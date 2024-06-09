@@ -4,6 +4,7 @@ Module to solve the coin change problem using dynamic
 programming with optimized space complexity
 """
 
+
 def makeChange(coins, total):
     """
     Determine the fewest number of coins needed to meet a given amount total.
