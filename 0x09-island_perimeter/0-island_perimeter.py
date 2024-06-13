@@ -1,20 +1,25 @@
 #!/usr/bin/python3
-"""0x09. Island Perimeter
+"""
+Function to calculate the perimeter of the island described in the grid.
 """
 
 
-def makeChange(coins, total):
-    if total <= 0:
-        return 0
+def island_perimeter(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+    perimeter = 0
 
-    # Create an array to store the minimum number of coins
-    min_coins = [float('inf')] * (total + 1)
-    min_coins[0] = 0
+    for row in range(rows):
+        for col in range(cols):
+            if grid[row][col] == 1:  # Land cell
+                # Check each of the four sides
+                if row == 0 or grid[row-1][col] == 0:  # Top side
+                    perimeter += 1
+                if row == rows-1 or grid[row+1][col] == 0:  # Bottom side
+                    perimeter += 1
+                if col == 0 or grid[row][col-1] == 0:  # Left side
+                    perimeter += 1
+                if col == cols-1 or grid[row][col+1] == 0:  # Right side
+                    perimeter += 1
 
-    for coin in coins:
-        for i in range(coin, total + 1):
-            # Update the minimum number of coins required for each value
-            min_coins[i] = min(min_coins[i], min_coins[i - coin] + 1)
-
-    # Return the minimum number of coins required to reach the total value
-    return min_coins[total] if min_coins[total] != float('inf') else -1
+    return perimeter
